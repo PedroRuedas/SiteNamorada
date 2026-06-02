@@ -1,0 +1,23 @@
+@model SiteNamorada.Models.LoginViewModel
+
+<div class="login-box">
+
+    <h1>Login ❤️</h1>
+
+    <form method="post">
+
+        <input asp-for="Email" placeholder="Email" />
+
+        <input asp-for="Senha"
+               type="password"
+               placeholder="Senha" />
+
+        <button>Entrar</button>
+
+    </form>
+
+    <a href="/Account/Cadastro">
+        Criar conta
+    </a>
+
+</div>

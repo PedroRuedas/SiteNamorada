@@ -1,0 +1,28 @@
+## Ignore Visual Studio temporary files, build outputs, and user-specific files
+.vs/
+/bin/
+/obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# ASP.NET files
+appsettings*.json
+site.db
+
+# Visual Studio Code
+.vscode/
+
+# NuGet
+*.nupkg
+*.snupkg
+
+# Logs
+*.log
+
+# Published output
+/publish/
