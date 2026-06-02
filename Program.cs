@@ -7,7 +7,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlite("Data Source=site.db");
+    var dbPath = Path.Combine(AppContext.BaseDirectory, "site.db");
+    options.UseSqlite($"Data Source={dbPath}");
 });
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
