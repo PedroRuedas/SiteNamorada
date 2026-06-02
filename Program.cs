@@ -30,6 +30,9 @@ app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Login}/{id?}");
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
 
-app.Run($"http://10.12.0.1:{port}");
+app.Urls.Clear();
+app.Urls.Add($"http://0.0.0.0:{port}");
+
+app.Run();
