@@ -26,3 +26,6 @@ site.db
 
 # Published output
 /publish/
+
+# Build outputs
+out/
