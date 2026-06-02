@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: site-namorada
+    env: dotnet
+    plan: free
+    buildCommand: dotnet publish -c Release -o out
+    startCommand: dotnet out/SeuProjeto.dll
