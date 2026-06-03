@@ -1,21 +1,39 @@
 @model SiteNamorada.Models.CadastroViewModel
 
-<div class="login-box">
+<div class="auth-container">
 
-    <h1>Cadastro ❤️</h1>
+    <div class="login-box">
 
-    <form method="post">
+        <div class="heart-icon">💕</div>
 
-        <input asp-for="Nome" placeholder="Nome" />
+        <h1>Criar Conta</h1>
 
-        <input asp-for="Email" placeholder="Email" />
+        <p class="subtitle">
+            Faça parte da nossa história
+        </p>
 
-        <input asp-for="Senha"
-               type="password"
-               placeholder="Senha" />
+        <form method="post">
 
-        <button>Cadastrar</button>
+            <div class="input-group">
+                <input asp-for="Nome" placeholder="Seu nome" />
+            </div>
 
-    </form>
+            <div class="input-group">
+                <input asp-for="Email" placeholder="Seu email" />
+            </div>
+
+            <div class="input-group">
+                <input asp-for="Senha"
+                       type="password"
+                       placeholder="Sua senha" />
+            </div>
+
+            <button class="btn-love">
+                Cadastrar
+            </button>
+
+        </form>
+
+    </div>
 
 </div>

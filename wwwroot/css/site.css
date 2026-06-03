@@ -1,100 +1,148 @@
-body{
-    margin:0;
-    font-family:'Segoe UI', sans-serif;
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
 
     background: linear-gradient(
         135deg,
-        #ffd6e7,
-        #fff0f5,
-        #ffe4ec
+        #ffe5ec,
+        #ffd6ff,
+        #e7c6ff
     );
 
-    min-height:100vh;
+    min-height: 100vh;
 }
 
-.login-box{
-    width:380px;
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
 
-    margin:80px auto;
+.login-box {
+    width: 100%;
+    max-width: 420px;
 
-    padding:40px;
+    padding: 40px;
 
-    background:rgba(255,255,255,.85);
+    border-radius: 25px;
 
-    backdrop-filter:blur(15px);
+    background: rgba(255,255,255,.25);
 
-    border-radius:25px;
+    backdrop-filter: blur(15px);
 
     box-shadow:
-    0 15px 40px rgba(0,0,0,.1);
+        0 8px 30px rgba(0,0,0,.15);
+
+    text-align: center;
+
+    animation: fadeIn .8s ease;
 }
 
-input{
-    width:100%;
-    padding:10px;
-    margin-top:10px;
+.heart-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
 }
 
-button{
-    width:100%;
-
-    padding:14px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#ff4d88;
-
-    color:white;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    transition:.3s;
+.login-box h1 {
+    color: #ff4d8d;
+    margin-bottom: 5px;
 }
 
-button:hover{
-    transform:translateY(-3px);
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 14px;
+
+    border: none;
+    border-radius: 15px;
+
+    background: rgba(255,255,255,.8);
+
+    font-size: 15px;
+
+    box-sizing: border-box;
+
+    transition: .3s;
+}
+
+.login-box input:focus {
+    outline: none;
+
+    transform: scale(1.02);
 
     box-shadow:
-    0 10px 20px rgba(255,77,136,.4);
+        0 0 15px rgba(255,77,141,.3);
 }
 
-.card{
-    width:500px;
-    margin:auto;
-    background:white;
-    padding:20px;
-    border-radius:20px;
-}
-.hero{
-    text-align:center;
+.btn-love {
+    width: 100%;
 
-    padding:80px 20px;
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4d8d,
+            #c77dff
+        );
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    margin-top: 10px;
 }
 
-.hero h1{
-    font-size:60px;
+.btn-love:hover {
+    transform: translateY(-3px);
 
-    color:#ff4d88;
+    box-shadow:
+        0 10px 25px rgba(255,77,141,.4);
 }
 
-.hero p{
-    font-size:22px;
-}
-.heart{
-    position:fixed;
-    animation:fall 8s linear infinite;
+.register-link {
+    display: inline-block;
+    margin-top: 20px;
+
+    text-decoration: none;
+
+    color: #ff4d8d;
+    font-weight: bold;
+
+    transition: .3s;
 }
 
-@keyframes fall{
-    from{
-        transform:translateY(-100px);
+.register-link:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
 
-    to{
-        transform:translateY(110vh);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
