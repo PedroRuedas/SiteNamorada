@@ -31,9 +31,6 @@ app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Login}/{id?}");
-var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
 
-app.Urls.Clear();
-app.Urls.Add($"http://0.0.0.0:{port}");
-
+// Use default ASP.NET Core URL configuration (launchSettings, ASPNETCORE_URLS or expando use)
 app.Run();

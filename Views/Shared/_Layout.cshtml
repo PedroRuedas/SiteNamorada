@@ -1,12 +1,39 @@
-﻿<header>
-    <nav class="navbar-custom">
-        <div class="logo">
-            ❤️ Nosso Cantinho
-        </div>
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SiteNamorada</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar-custom">
+            <div class="logo">
+                ❤️ Nosso Cantinho
+            </div>
 
-        <div class="menu">
-            <a asp-controller="Home" asp-action="Index">Home</a>
-            <a asp-controller="Home" asp-action="Privacy">Sobre</a>
+            <div class="menu">
+                <a asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-controller="Home" asp-action="Privacy">Sobre</a>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; @DateTime.Now.Year - SiteNamorada</p>
         </div>
-    </nav>
-</header>
+    </footer>
+
+    <script src="~/js/site.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
