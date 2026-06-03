@@ -19,6 +19,8 @@ if (string.IsNullOrWhiteSpace(connectionString))
     throw new InvalidOperationException("PostgreSQL connection string is not configured. Set ConnectionStrings:DefaultConnection in appsettings.json or the DATABASE_URL environment variable.");
 }
 
+EnsureDatabaseExists(connectionString);
+
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseNpgsql(connectionString);
@@ -27,7 +29,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
 var app = builder.Build();
-// Ensure database and tables are created on startup
+// Ensure database tables are created on startup
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -44,6 +46,35 @@ app.MapControllerRoute(
     pattern: "{controller=Account}/{action=Login}/{id?}");
 
 app.Run();
+
+static void EnsureDatabaseExists(string connectionString)
+{
+    var builder = new NpgsqlConnectionStringBuilder(connectionString);
+    var databaseName = builder.Database;
+
+    if (string.IsNullOrWhiteSpace(databaseName))
+    {
+        throw new InvalidOperationException("The PostgreSQL connection string must include a database name.");
+    }
+
+    var adminBuilder = new NpgsqlConnectionStringBuilder(connectionString)
+    {
+        Database = "postgres"
+    };
+
+    using var connection = new NpgsqlConnection(adminBuilder.ConnectionString);
+    connection.Open();
+
+    using var existsCommand = new NpgsqlCommand("SELECT 1 FROM pg_database WHERE datname = @name", connection);
+    existsCommand.Parameters.AddWithValue("name", databaseName);
+    var exists = existsCommand.ExecuteScalar() != null;
+
+    if (!exists)
+    {
+        using var createCommand = new NpgsqlCommand($"CREATE DATABASE \"{databaseName}\"", connection);
+        createCommand.ExecuteNonQuery();
+    }
+}
 
 static string ConvertDatabaseUrl(string databaseUrl)
 {
